@@ -9,7 +9,7 @@
 | **Sector** | E-Commerce / Fashion Retail |
 | **Team ID** | DVA-D-G2 |
 | **Section** | Section D |
-| **Faculty Mentor** | _To be filled by team_ |
+| **Faculty Mentor** | Archit Raj|
 | **Institute** | Newton School of Technology |
 | **Submission Date** | _To be filled by team_ |
 
