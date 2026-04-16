@@ -1,36 +1,5 @@
 # SectionD_G2_MyntraAnalytics
 
-> **Newton School of Technology | Data Visualization & Analytics**
-> A 2-week industry simulation capstone using Python, GitHub, and Tableau to convert raw Myntra fashion e-commerce data into actionable business intelligence for India's leading online fashion retailer.
-
----
-
-## Before You Start
-
-1. Repository is named using the format `SectionD_G2_MyntraAnalytics`.
-2. Add the raw dataset to `data/raw/` from the Kaggle link below before running any notebook.
-3. Complete the notebooks in order from `01` to `05`.
-4. Publish the final Tableau dashboard and add the public link in `tableau/dashboard_links.md`.
-5. Export the final report and presentation as PDFs into `reports/`.
-
-### Quick Start
-
-If you are working locally:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate        # On Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-jupyter notebook
-```
-
-If you are working in Google Colab:
-
-- Upload or sync the notebooks from `notebooks/`
-- Keep the final `.ipynb` files committed to GitHub
-- Export any cleaned datasets into `data/processed/`
-
----
 
 ## Project Overview
 
