@@ -266,7 +266,7 @@ This table must match evidence in GitHub Insights, PR history, and committed fil
 | Shourya (ETL Lead) |  | ✓ | ✓ |  |  |  |  |
 | Mihika (Analysis Lead) | ✓ |  |  | ✓ |  |  |  |
 | Vaageesh (Viz Lead) |  |  |  |  | ✓ |  |  |
-| Gauri (Strategy Lead) | ✓ |  | | ✓ |  |  |  |
+| Gauri (Strategy Lead) | ✓ |  | | | ✓ |  |  |
 | Pratyaksha (PPT & Quality Lead) |  | |  | |  | ✓ | ✓ |
 
 _Declaration: We confirm that the above contribution details are accurate and verifiable through GitHub Insights, PR history, and submitted artifacts._
