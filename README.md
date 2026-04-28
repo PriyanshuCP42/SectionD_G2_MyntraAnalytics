@@ -25,11 +25,17 @@
 | Strategy Lead | Gauri | `gaurimehrotra1623 ` |
 | PPT & Quality Lead | Pratyaksha | `Pratyaksha37` |
 
-> **Note:** Replace all `github-handle` placeholders with actual GitHub usernames. Every member must have visible commits and pull requests.
-
 ---
 
-## Business Problem
+### 📊 Project Snapshot (At a Glance)
+- **Total Catalogue Size:** 526,564 Fashion Products
+- **Brand Portfolio:** 1,719+ Unique Brands
+- **Total Revenue (Captured):** ₹68.9 Cr
+- **Margin Leakage:** ₹58.21 Cr (Potential revenue lost to discounts)
+- **Revenue Split:** 62.79% Women | 37.21% Men
+- **Platform Efficiency:** Only ~₹58 collected for every ₹100 listed (45.9% Value Erosion)
+
+---
 
 Myntra, India's leading online fashion and lifestyle retailer, operates in a fiercely competitive e-commerce landscape where pricing strategy, brand positioning, and discount depth directly determine revenue and customer retention. The category management and merchandising teams struggle to identify which product categories, brands, and gender segments drive the most value — and whether current discount structures are eroding margin without meaningfully improving volume. This project serves the Head of Category Management and the Pricing Strategy team as primary decision-makers.
 
@@ -49,7 +55,7 @@ Myntra, India's leading online fashion and lifestyle retailer, operates in a fie
 |---|---|
 | **Source Name** | Kaggle — Raw Dataset (manishmathias/myntra-fashion-dataset) |
 | **Direct Access Link** | [https://www.kaggle.com/datasets/manishmathias/myntra-fashion-dataset/data](https://www.kaggle.com/datasets/manishmathias/myntra-fashion-dataset/data) |
-| **Row Count** | ~1,00,000+ product listings (verify after download) |
+| **Row Count** | 526,564 product listings |
 | **Column Count** | 10+ meaningful analytical columns |
 | **Time Period Covered** | December 2021 — January 2023 |
 | **Format** | CSV |
@@ -73,59 +79,75 @@ For full column definitions, see [`docs/data_dictionary.md`](docs/data_dictionar
 
 ---
 
+
 ## KPI Framework
 
-| KPI | Definition | Formula / Computation |
-|---|---|---|
-| **Average Discount Rate (%)** | Measures how aggressively products are discounted on average across categories | `((MRP − DiscountPrice) / MRP) × 100` — computed per category in `04_statistical_analysis.ipynb` |
-| **Effective Revenue Index** | Proxy revenue score combining sell-through price with review volume as a demand signal | `DiscountPrice × log(1 + Reviews)` — computed per brand in `05_final_load_prep.ipynb` |
-| **Rating-to-Discount Correlation** | Measures whether heavier discounts correlate with better or worse customer ratings | Pearson correlation between `Discount %` and `Ratings` in `04_statistical_analysis.ipynb` |
-| **Category Value Score** | Ranks categories by their balance of high price, high rating, and high review count | Composite normalised score: `0.4×Price + 0.3×Rating + 0.3×log(Reviews)` in `05_final_load_prep.ipynb` |
-| **Brand Concentration Index** | Share of total listings held by the top 10 brands — measures market concentration | `(Top 10 Brand Listings / Total Listings) × 100` in `03_eda.ipynb` |
+| KPI | Definition | Value | Business Interpretation |
+|---|---|---|---|
+| **Total Revenue** | Total realized revenue after discounts | ₹689,054,937 | High volume driven by mid-segment sales |
+| **Total SKU Count** | Total number of listed products | 526,564 | Massive assortment requiring high inventory management |
+| **Revenue Share (W)** | % of revenue from women’s category | 62.79% | Primary revenue engine of the platform |
+| **Average MRP** | Mean original price across products | ₹2,414 | Indicates mid-premium catalogue positioning |
+| **Average Rating** | Mean customer rating (out of 5) | 4.095 | Strong overall customer satisfaction baseline |
+| **Average Discount %** | Mean discount offered across platform | 41.98% | Significant reliance on discounting for sales volume |
+| **Margin Leakage** | Estimated revenue loss due to markdowns | ₹58.21 Cr | Critical area for profitability optimization |
+| **Disc–Rating Corr** | Relationship between discount depth and ratings | 0.10 | **Weak Correlation:** Discounts do not drive quality perception |
+| **VFM Index** | Value-for-Money composite score | 2.015 | Moderate perceived value across the catalogue |
 
-Document KPI logic clearly in `notebooks/04_statistical_analysis.ipynb` and `notebooks/05_final_load_prep.ipynb`.
+> **Note:** For detailed KPI logic and computation, refer to [`notebooks/04_statistical_analysis.ipynb`](notebooks/04_statistical_analysis.ipynb).
 
 ---
 
 ## Tableau Dashboard
 
-| Item | Details |
-|---|---|
-| **Dashboard URL** | _Paste Tableau Public link here after publishing_ |
-| **Executive View** | High-level KPI summary: Total Listings, Average Discount Rate, Top Revenue Category, Top Rated Brand — filterable by Gender |
-| **Operational View** | Category and brand drill-down: Discount vs Rating scatter, Top Brands by Effective Revenue, Category Value Score ranking, Price distribution by Gender segment |
-| **Main Filters** | Gender, Category, Brand, Discount Range (slider), Rating Range |
+| Item                       | Details                                                                                                                                                                                                                                                                                                                     |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dashboard Views**        | 3 integrated dashboards: <br>1. **Category & Brand Revenue Intelligence** <br>2. **Value for Money & Assortment Optimization** <br>3. **Discount Depth & Margin Health**                                                                                                                                                    |
+| **Executive KPIs**         | Revenue, SKU Count, Revenue Split (Gender), Avg Price, VFM Index, Ratings, Discount %, Margin Leakage                                                                                                                                                                                                                       |
+| **Key Visuals**            | - Gender revenue split donut chart <br>- SKU distribution treemap <br>- Category × Gender revenue bars <br>- Brand SKU ranking <br>- Price vs Rating scatter (Brand Quadrant) <br>- VFM index by sub-category <br>- Discount vs Rating scatter <br>- Discount heatmaps & band distribution <br>- Margin leakage by category |
+| **Main Filters**           | Brand Name, Category, Gender, Individual Category, Price Range, Discount %                                                                                                                                                                                                                                                  |
+| **Analytical Focus Areas** | - Revenue concentration <br>- Value-for-money optimization <br>- Discount effectiveness vs ratings <br>- Margin leakage identification                                                                                                                                                                                      |
+| **Interactivity**          | Fully filterable across category, gender, and pricing dimensions enabling drill-down from category → sub-category → brand                                                                                                                                                                                                   |
 
 Store dashboard screenshots in [`tableau/screenshots/`](tableau/screenshots/) and document the public links in [`tableau/dashboard_links.md`](tableau/dashboard_links.md).
 
 ---
 
-## Key Insights
+## Key Insights & Findings
 
-_To be populated after full analysis. Template entries shown below as placeholders — replace with data-backed findings from your notebooks._
+### 🛍️ Market & Segment Performance
+- **Women's Segment Dominance:** Accounts for **62.79%** of total revenue. While it is the core business driver, it is also the most heavily discounted, raising significant margin concerns.
+- **Top Revenue Categories:** Indian Wear and Western Wear outperform all other categories. Strategic investment should focus on protecting these high-volume segments.
 
-1. **Discount depth does not drive ratings** — A weak or negative correlation between discount percentage and customer ratings suggests that price cuts alone do not improve perceived product quality or customer satisfaction.
-2. **Topwear dominates listing volume but Footwear commands higher average price points** — indicating a cross-category opportunity to push premium Footwear listings harder.
-3. **Women's fashion accounts for the majority of listings yet shows higher average discount rates** — pointing to potential margin erosion that requires category-level pricing review.
-4. **Top 10 brands account for a disproportionate share of all listings** — reflecting high market concentration; long-tail brands need visibility support or should be rationalised.
-5. **Products priced in the ₹500–₹1,500 mid-range receive the highest volume of reviews** — suggesting this price band captures the largest active buyer cohort.
-6. **Heavily discounted products (>50% off) receive fewer reviews on average** — implying that deep discounts may signal low-quality perception rather than driving purchases.
-7. **Kids' fashion is the smallest segment by listing count but carries above-average MRP** — an underserved, high-margin segment worth targeted expansion.
-8. **Certain brand–category combinations consistently achieve ratings above 4.0 with minimal discounting** — identifying brand-category pairs that can sustain premium pricing.
-9. _Insight 9 — to be filled after EDA_
-10. _Insight 10 — to be filled after statistical analysis_
+### 💰 Pricing & Discounting Audit
+- **Unsustainable Discounting:** Widespread discounting (Avg **41.98%**, with 42% of SKUs over 50% off) indicates a heavy reliance on markdowns that may be unsustainable.
+- **Significant Margin Leakage:** Estimated **₹58.21 Cr** in potential revenue is lost to discounting, representing the biggest financial impact on profitability.
+- **Ineffective Deep Discounts:** Products with >50% discounts have an average rating of only **1.48**, suggesting deep markdowns signal low quality rather than attracting value-conscious buyers.
+
+### ⚖️ Value & Quality Perception
+- **Price-Rating Independence:** A weak correlation of **0.10** between discounts and ratings confirms that price cuts have almost no impact on customer satisfaction.
+- **Premium Parity:** Higher-priced items do not consistently achieve better ratings, weakening the justification for premium pricing without accompanying quality differentiators.
+
+### 📦 Assortment & Supply Chain
+- **SKU Over-Supply:** High concentration in categories like Sarees, Kurtas, and Tops indicates a risk of over-supply and stock aging.
+- **Brand Dependency:** Top brands like **Pothys, Roadster, and Kalini** dominate SKU counts. High dependency on a few brands increases platform risk.
+- **Niche Opportunities:** Sub-categories like Accessories and Innerwear deliver high Value-for-Money (VFM) but are currently under-leveraged in revenue contribution.
 
 ---
 
 ## Recommendations
 
-| # | Insight | Recommendation | Expected Impact |
-|---|---|---|---|
-| 1 | Discount depth does not improve ratings | Cap discount offers at 30–35% for categories where ratings are already high; redirect discount budget to loyalty rewards instead | Estimated 5–8% improvement in gross margin on top-rated SKUs |
-| 2 | Women's segment shows high discount rates with average ratings | Conduct a SKU rationalisation for low-rated, high-discount women's products; reduce listing clutter and focus on proven brands | Reduce markdown losses by an estimated 10–15% in the Women's segment |
-| 3 | Mid-range ₹500–₹1,500 segment drives highest engagement | Prioritise this price band for new brand onboarding and seasonal campaign targeting | Estimated 12–18% uplift in review volume, improving social proof for conversion |
-| 4 | Kids' fashion is high-margin and underserved | Increase Kids' category SKU count by sourcing 2–3 premium brand partnerships; run targeted back-to-school and festive campaigns | Expand Kids' category GMV by an estimated 20% within one season |
-| 5 | Top brand concentration creates platform dependency risk | Develop a Myntra Emerging Brands programme to uplift mid-tier brands with curated visibility — reducing top-10 brand dependency | Improve platform resilience and diversify revenue across 30+ brands |
+| #  | Insight                                                                | Recommendation                                                                                                                             | Expected Impact                                                                  |
+| -- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
+| 1  | Heavy discounting (~42% avg, 42% SKUs >50%) with ₹58 Cr margin leakage | **Rationalize discounting strategy** — cap discounts at 30–40% for most categories and restrict >50% discounts to clearance inventory only | Reduce margin leakage by **15–25%** while maintaining sales volume               |
+| 2  | Discount has negligible impact on ratings (correlation = 0.10)         | **Shift from price-led to value-led strategy** — invest in product quality, brand positioning, and reviews instead of deeper discounts     | Improve average ratings and long-term customer trust without sacrificing margins |
+| 3  | Women’s category drives ~63% revenue but is highly discounted          | **Optimize women’s assortment** — reduce low-rated, high-discount SKUs and prioritize high VFM products                                    | Improve profitability of the largest revenue segment by **10–15%**               |
+| 4  | High discount products have very low ratings (~1.48)                   | **Flag and prune poor-performing SKUs** — remove or rework products with high discounts and low ratings                                    | Increase overall platform rating and reduce negative customer perception         |
+| 5  | Indian wear & Western wear dominate revenue but also margin leakage    | **Category-level pricing optimization** — introduce tighter discount bands and premium sub-lines in these categories                       | Recover margins from top revenue categories while sustaining demand              |
+| 6  | High VFM SKUs (~79K) are under-leveraged                               | **Promote high VFM products** via search ranking, ads, and recommendations                                                                 | Increase conversion rates and customer satisfaction simultaneously               |
+| 7  | Brand concentration is high (few brands dominate SKU share)            | **Diversify brand portfolio** — onboard and promote emerging brands with strong VFM scores                                                 | Reduce dependency risk and improve assortment variety                            |
+| 8  | Optimal size depth ~5–6 options                                        | **Standardize size assortment** around high-performing size bands                                                                          | Reduce inventory complexity and improve availability efficiency                  |
+| 9  | No clear advantage of premium pricing on ratings                       | **Re-evaluate premium pricing strategy** — ensure premium SKUs justify price via quality, branding, or exclusivity                         | Improve premium segment conversion and reduce price resistance                   |
 
 ---
 
@@ -177,7 +199,7 @@ The project follows a structured 7-step workflow:
 3. **Clean and Transform** — Cleaning pipeline built in `notebooks/02_cleaning.ipynb`: handle missing values in `Ratings` and `Reviews`, parse `DiscountOffer` string into numeric discount percentage, standardise `Gender` and `Category` labels, remove duplicate product entries.
 4. **Analyze** — EDA in notebook `03` (brand concentration, price distributions, rating patterns); Statistical analysis in notebook `04` (Pearson correlation between discount and rating, OLS regression of price on reviews, segment hypothesis testing).
 5. **Visualize** — Interactive Tableau dashboard built with Executive KPI view and Operational drill-down; published on Tableau Public.
-6. **Recommend** — 5 data-backed business recommendations delivered, each tied to a specific KPI finding.
+6. **Recommend** — 10 data-backed business recommendations delivered, each tied to a specific KPI finding.
 7. **Report** — Final project report and presentation deck completed and exported to PDF in `reports/`.
 
 ---
@@ -240,7 +262,7 @@ The project follows a structured 7-step workflow:
 - [ ] EDA with written insights, statistical analysis results
 - [ ] Dashboard screenshots and explanation
 - [ ] 8–12 key insights in decision language
-- [ ] 3–5 actionable recommendations with impact estimates
+- [ ] 10 actionable recommendations with impact estimates
 - [ ] Contribution matrix matches GitHub history
 
 **Presentation Deck**
