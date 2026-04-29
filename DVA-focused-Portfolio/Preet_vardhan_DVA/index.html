@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preet Vardhan | Data Analyst</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --surface2: #21262d;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #7d8590;
+    --accent: #58a6ff;
+    --accent2: #3fb950;
+    --accent3: #f78166;
+    --accent4: #d2a8ff;
+    --badge-bg: #388bfd1a;
+    --badge-border: #388bfd33;
+    --header-h: 62px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    height: var(--header-h);
+    background: rgba(13,17,23,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center;
+    padding: 0 24px; gap: 16px;
+  }
+  .header-logo {
+    display: flex; align-items: center; gap: 10px; text-decoration: none;
+  }
+  .header-logo svg { width: 32px; height: 32px; fill: var(--text); }
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    color: var(--text); letter-spacing: -0.02em;
+  }
+  .header-nav { margin-left: auto; display: flex; align-items: center; gap: 6px; }
+  .header-nav a {
+    color: var(--text-muted); text-decoration: none;
+    font-size: 0.875rem; padding: 6px 14px; border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
+  }
+  .header-nav a:hover { background: var(--surface2); color: var(--text); }
+
+  /* LAYOUT */
+  .container {
+    max-width: 1280px; margin: 0 auto;
+    padding: 32px 24px;
+    display: grid;
+    grid-template-columns: 296px 1fr;
+    gap: 32px; align-items: start;
+  }
+
+  /* SIDEBAR */
+  aside { position: sticky; top: calc(var(--header-h) + 24px); }
+  .avatar-wrap { margin-bottom: 16px; }
+  .avatar {
+    width: 260px; height: 260px; border-radius: 50%;
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    font-family: 'Syne', sans-serif;
+    font-size: 5rem; font-weight: 800;
+    color: var(--accent); letter-spacing: -2px;
+    user-select: none;
+    background: linear-gradient(135deg, #0d1117 0%, #1a2332 100%);
+  }
+  .vcard-names { margin-bottom: 8px; }
+  .vcard-fullname {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.5rem; font-weight: 700;
+    line-height: 1.2; color: var(--text); letter-spacing: -0.03em;
+  }
+  .vcard-username { font-size: 1rem; font-weight: 400; color: var(--text-muted); margin-top: 2px; }
+  .bio { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 12px 0 16px; }
+  .btn-follow {
+    display: block; width: 100%; text-align: center;
+    padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--border); background: var(--surface2);
+    color: var(--text); font-size: 0.875rem; font-weight: 500;
+    text-decoration: none; transition: border-color 0.2s, background 0.2s;
+    cursor: pointer; margin-bottom: 20px;
+  }
+  .btn-follow:hover { border-color: var(--accent); background: var(--badge-bg); }
+  .vcard-details { list-style: none; }
+  .vcard-details li {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.875rem; color: var(--text-muted); padding: 4px 0;
+  }
+  .vcard-details li svg { width: 16px; height: 16px; fill: var(--text-muted); flex-shrink: 0; }
+  .vcard-details a { color: var(--accent); text-decoration: none; }
+  .vcard-details a:hover { text-decoration: underline; }
+
+  .sidebar-section { margin-top: 24px; }
+  .sidebar-section h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.875rem; font-weight: 700;
+    color: var(--text-muted); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 12px;
+  }
+  .badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .badge {
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;
+    border: 1px solid var(--badge-border); background: var(--badge-bg);
+    color: var(--accent); white-space: nowrap;
+  }
+  .achievement-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+  }
+  .achievement-item:last-child { border-bottom: none; }
+  .achievement-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(135deg, #f78166, #ff7b00);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .achievement-text { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+  .achievement-text strong { color: var(--text); display: block; font-size: 0.85rem; }
+
+  /* MAIN */
+  .tab-nav {
+    display: flex; align-items: center; gap: 0;
+    border-bottom: 1px solid var(--border); margin-bottom: 24px;
+  }
+  .tab-item {
+    display: flex; align-items: center; gap: 6px;
+    padding: 12px 16px; font-size: 0.875rem;
+    color: var(--text-muted); cursor: pointer;
+    border-bottom: 2px solid transparent; margin-bottom: -1px;
+    transition: color 0.15s;
+  }
+  .tab-item.active { color: var(--text); border-bottom-color: #f78166; }
+  .tab-item svg { width: 16px; height: 16px; fill: currentColor; }
+  .count-badge {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text-muted); font-size: 0.7rem;
+    padding: 1px 7px; border-radius: 20px;
+  }
+
+  /* Filter bar */
+  .filter-bar {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px; flex-wrap: wrap;
+  }
+  .search-input {
+    flex: 1; min-width: 200px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 8px 14px;
+    font-size: 0.875rem; color: var(--text); outline: none;
+    transition: border-color 0.2s; font-family: inherit;
+  }
+  .search-input::placeholder { color: var(--text-muted); }
+  .search-input:focus { border-color: var(--accent); }
+  .filter-btns { display: flex; gap: 6px; }
+  .filter-btn {
+    padding: 6px 14px; border-radius: 8px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); font-size: 0.8rem; cursor: pointer;
+    transition: all 0.15s; font-family: inherit;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--surface2); color: var(--text); border-color: var(--accent);
+  }
+
+  /* Project cards */
+  .projects-grid { display: flex; flex-direction: column; gap: 16px; }
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    cursor: pointer; transition: border-color 0.2s, transform 0.15s;
+    animation: fadeUp 0.4s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .card-image {
+    height: 140px; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    background: var(--surface2);
+  }
+  .card-body { padding: 16px 20px; }
+  .card-header {
+    display: flex; align-items: flex-start;
+    justify-content: space-between; gap: 12px; margin-bottom: 8px;
+  }
+  .card-title-group { display: flex; align-items: center; gap: 8px; }
+  .card-title-group svg { width: 16px; height: 16px; fill: var(--accent); flex-shrink: 0; }
+  .card-title { font-weight: 600; color: var(--accent); font-size: 0.95rem; text-decoration: none; }
+  .public-badge {
+    font-size: 0.7rem; padding: 2px 8px; border-radius: 20px;
+    border: 1px solid var(--badge-border); color: var(--accent);
+  }
+  .card-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 12px; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .topic-tag {
+    font-size: 0.75rem; padding: 2px 10px; border-radius: 20px;
+    background: var(--badge-bg); color: var(--accent); border: 1px solid var(--badge-border);
+  }
+  .card-footer { display: flex; align-items: center; gap: 16px; font-size: 0.8rem; color: var(--text-muted); }
+  .lang-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px; }
+  .lang-python { background: #3572a5; }
+  .lang-tableau { background: #e97627; }
+
+  /* Contribution graph */
+  .contrib-section { margin-top: 32px; }
+  .contrib-title { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+  .contrib-title strong { color: var(--text); }
+  .contrib-graph { display: grid; grid-template-columns: repeat(52, 1fr); gap: 3px; }
+  .contrib-col { display: flex; flex-direction: column; gap: 3px; }
+  .contrib-cell {
+    width: 100%; aspect-ratio: 1; border-radius: 2px;
+    background: var(--surface2); transition: transform 0.1s; cursor: default;
+  }
+  .contrib-cell:hover { transform: scale(1.5); }
+  .contrib-cell.l1 { background: #0e4429; }
+  .contrib-cell.l2 { background: #006d32; }
+  .contrib-cell.l3 { background: #26a641; }
+  .contrib-cell.l4 { background: #39d353; }
+
+  /* Education */
+  .edu-list { display: flex; flex-direction: column; gap: 0; }
+  .edu-item {
+    display: flex; gap: 16px; padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .edu-item:last-child { border-bottom: none; }
+  .edu-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent4));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .edu-body { flex: 1; }
+  .edu-degree { font-weight: 600; font-size: 0.95rem; color: var(--text); }
+  .edu-school { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+  .edu-meta { display: flex; gap: 12px; margin-top: 6px; flex-wrap: wrap; }
+  .edu-year, .edu-grade {
+    font-size: 0.78rem; padding: 2px 10px; border-radius: 20px;
+    border: 1px solid var(--border); color: var(--text-muted);
+  }
+  .edu-grade { border-color: var(--accent2); color: var(--accent2); }
+
+  /* Skills */
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; }
+  .skill-group {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .skill-group-label {
+    font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 10px;
+  }
+  .skill-badges { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-badge {
+    font-size: 0.75rem; padding: 3px 10px; border-radius: 20px;
+    background: var(--surface2); color: var(--text); border: 1px solid var(--border);
+  }
+
+  .section-heading {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.1rem; font-weight: 700;
+    color: var(--text); letter-spacing: -0.02em;
+    margin: 32px 0 16px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.7); z-index: 200;
+    align-items: center; justify-content: center; padding: 24px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; max-width: 540px; width: 100%;
+    overflow: hidden; animation: modalIn 0.2s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .modal-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
+  }
+  .modal-header-title { font-weight: 600; color: var(--text); font-size: 1rem; }
+  .modal-close {
+    width: 28px; height: 28px; border-radius: 6px; border: none;
+    background: transparent; cursor: pointer; color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s;
+  }
+  .modal-close:hover { background: var(--surface2); }
+  .modal-close svg { width: 16px; height: 16px; fill: currentColor; }
+  .modal-body { padding: 20px; }
+  .modal-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .modal-tools { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+  .modal-footer {
+    display: flex; justify-content: flex-end; gap: 10px;
+    padding: 16px 20px; border-top: 1px solid var(--border);
+  }
+  .btn-cancel {
+    padding: 8px 16px; border-radius: 8px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text-muted); cursor: pointer;
+    font-size: 0.875rem; transition: background 0.15s; font-family: inherit;
+  }
+  .btn-cancel:hover { background: var(--surface2); }
+  .btn-view {
+    padding: 8px 16px; border-radius: 8px;
+    background: var(--accent); color: #0d1117;
+    font-size: 0.875rem; font-weight: 600;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .btn-view:hover { opacity: 0.85; }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px; text-align: center;
+    font-size: 0.8rem; color: var(--text-muted); margin-top: 48px;
+  }
+  footer a { color: var(--accent); text-decoration: none; margin: 0 8px; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 900px) {
+    .container { grid-template-columns: 1fr; }
+    aside { position: static; }
+    .avatar { width: 180px; height: 180px; font-size: 3.5rem; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .contrib-graph { grid-template-columns: repeat(26, 1fr); }
+  }
+  .no-results { display: none; text-align: center; color: var(--text-muted); padding: 40px; font-size: 0.9rem; }
+  .no-results.show { display: block; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="header-logo" href="#">
+    <svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+    <span class="header-title">Portfolio</span>
+  </a>
+  <nav class="header-nav">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="mailto:preetvardhansingh8@gmail.com">Contact</a>
+  </nav>
+</header>
+
+<!-- LAYOUT -->
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="avatar-wrap">
+      <div class="avatar">PV</div>
+    </div>
+    <div class="vcard-names">
+      <h1 class="vcard-fullname">Preet Vardhan</h1>
+      <h2 class="vcard-username">preetvardhan10</h2>
+    </div>
+    <p class="bio">Data Analyst turning raw datasets into actionable insights — skilled in SQL, Python, and interactive dashboards. Exploring AI & ML at Newton School of Technology.</p>
+    <a href="https://github.com/preetvardhan10" target="_blank" class="btn-follow">Follow on GitHub</a>
+
+    <ul class="vcard-details">
+      <li>
+        <svg viewBox="0 0 16 16"><path d="M11.536 3.464a5 5 0 010 7.072L8 14.07l-3.536-3.535a5 5 0 117.072-7.072v.001zm1.06 8.132a6.5 6.5 0 10-9.192 0l3.535 3.536a1.5 1.5 0 002.122 0l3.535-3.536zM8 9a2 2 0 100-4 2 2 0 000 4z"/></svg>
+        Sonipat, Haryana, India
+      </li>
+      <li>
+        <svg viewBox="0 0 16 16"><path d="M1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0114.25 14H1.75A1.75 1.75 0 010 12.25v-8.5C0 2.784.784 2 1.75 2zM1.5 12.251c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809v6.442zm13-8.181v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.809z"/></svg>
+        <a href="mailto:preetvardhansingh8@gmail.com">preetvardhansingh8@gmail.com</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="https://github.com/preetvardhan10" target="_blank">github.com/preetvardhan10</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 16 16"><path d="M0 1.5A1.5 1.5 0 011.5 0h13A1.5 1.5 0 0116 1.5v13a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 010 14.5zm4.5 1a.5.5 0 00-.5.5v11a.5.5 0 001 0V3a.5.5 0 00-.5-.5zm3.5 0a.5.5 0 00-.5.5v7.5a.5.5 0 001 0V3a.5.5 0 00-.5-.5zm3.5 0a.5.5 0 00-.5.5v5a.5.5 0 001 0V3a.5.5 0 00-.5-.5z"/></svg>
+        <a href="https://www.kaggle.com/preetvardhan" target="_blank">kaggle.com/preetvardhan</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 16 16"><path d="M0 1.5A1.5 1.5 0 011.5 0h13A1.5 1.5 0 0116 1.5v13a1.5 1.5 0 01-1.5 1.5h-13A1.5 1.5 0 010 14.5v-13zm5.5 1a.5.5 0 00-.5.5v2a.5.5 0 001 0V4a.75.75 0 011.5 0v1a.5.5 0 001 0V3A2.25 2.25 0 005.5 2.5zm4.5 0A2.25 2.25 0 008 4.75V6a.5.5 0 001 0V4.75a.75.75 0 011.5 0V6a.5.5 0 001 0V4.75A2.25 2.25 0 0010 2.5zm-4.5 7a.5.5 0 00-.5.5v1.25A2.25 2.25 0 007.25 13.5h1.5A2.25 2.25 0 0011 11.25V10a.5.5 0 00-1 0v1.25a.75.75 0 01-.75.75h-1.5a.75.75 0 01-.75-.75V10a.5.5 0 00-.5-.5z"/></svg>
+        <a href="https://www.linkedin.com/in/preet-vardhan-aa4636323/" target="_blank">linkedin.com/in/preet-vardhan</a>
+      </li>
+    </ul>
+
+    <div class="sidebar-section">
+      <h3>Skills</h3>
+      <div class="badges">
+        <span class="badge">Python</span>
+        <span class="badge">SQL</span>
+        <span class="badge">Tableau</span>
+        <span class="badge">Power BI</span>
+        <span class="badge">Pandas</span>
+        <span class="badge">NumPy</span>
+        <span class="badge">Excel</span>
+        <span class="badge">EDA</span>
+        <span class="badge">Statistics</span>
+        <span class="badge">ML</span>
+        <span class="badge">Gen AI</span>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <h3>Achievements</h3>
+      <div class="achievement-item">
+        <div class="achievement-icon">📊</div>
+        <div class="achievement-text">
+          <strong>Kaggle Practitioner</strong>
+          Hands-on datasets & ML workflows on Kaggle
+        </div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🤖</div>
+        <div class="achievement-text">
+          <strong>Gen AI & LLM Explorer</strong>
+          Continuously learning Generative AI & Large Language Models
+        </div>
+      </div>
+      <div class="achievement-item">
+        <div class="achievement-icon">🎓</div>
+        <div class="achievement-text">
+          <strong>B.Tech CS &amp; AI — CGPA 7.9</strong>
+          Newton School of Technology, Rishihood University
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main>
+    <div class="tab-nav">
+      <div class="tab-item active">
+        <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/></svg>
+        Projects
+        <span class="count-badge" id="proj-count">2</span>
+      </div>
+    </div>
+
+    <!-- Filter -->
+    <div class="filter-bar" id="projects">
+      <input type="text" class="search-input" id="search" placeholder="Find a project...">
+      <div class="filter-btns">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="tableau">Tableau</button>
+      </div>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- Project 1: E-commerce Dashboard -->
+      <div class="project-card"
+        data-category="tableau"
+        data-title="E-commerce Sales Performance Dashboard"
+        data-desc="Cleaned and transformed raw transactional data (~50K+ records) using SQL and Python (Pandas) to ensure data accuracy and consistency. Performed exploratory data analysis to identify key business trends including top-selling categories, seasonal demand patterns, and customer segments. Built an interactive Tableau dashboard with dynamic filters, KPIs, and drill-down capabilities for revenue, profit, and customer metrics. Identified high-performing product categories contributing to ~60% of total revenue. Optimized SQL queries using joins and aggregations to improve data retrieval efficiency for dashboard integration."
+        data-tools="Tableau,SQL,Python,Pandas,EDA,KPI Design"
+        data-lang="tableau"
+        data-link="https://github.com/preetvardhan10">
+        <div class="card-image" style="background: linear-gradient(135deg, rgba(88,166,255,0.12) 0%, var(--surface) 100%);">
+          <svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:#58a6ff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+            <polyline points="3 9 7 13 11 9 15 13 21 7"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-title-group">
+              <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/></svg>
+              <span class="card-title">E-commerce Sales Performance Dashboard</span>
+            </div>
+            <span class="public-badge">Public</span>
+          </div>
+          <p class="card-desc">Interactive Tableau dashboard on 50K+ transactional records — EDA uncovered top-selling categories contributing to ~60% of revenue, with drill-down KPIs for profit and customer metrics.</p>
+          <div class="card-tags">
+            <span class="topic-tag">tableau</span>
+            <span class="topic-tag">sql</span>
+            <span class="topic-tag">python</span>
+            <span class="topic-tag">eda</span>
+            <span class="topic-tag">kpi</span>
+          </div>
+          <div class="card-footer">
+            <span><span class="lang-dot lang-tableau"></span>Tableau</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Customer Churn -->
+      <div class="project-card"
+        data-category="python"
+        data-title="Customer Churn Prediction Model"
+        data-desc="Processed and analyzed a customer dataset (~10K+ records) using Python (Pandas, NumPy) to identify behavioral patterns linked to churn. Performed feature engineering and data preprocessing — handling missing values, encoding categorical variables, and scaling features. Built and evaluated machine learning models (Logistic Regression, Decision Tree) achieving ~80–85% accuracy. Identified key churn drivers such as low engagement and purchase frequency, providing actionable business insights. Visualized model insights and data distributions using Matplotlib to support data-driven decision making."
+        data-tools="Python,Pandas,NumPy,Matplotlib,Logistic Regression,Decision Tree,Machine Learning"
+        data-lang="python"
+        data-link="https://github.com/preetvardhan10">
+        <div class="card-image" style="background: linear-gradient(135deg, rgba(63,185,80,0.1) 0%, var(--surface) 100%);">
+          <svg viewBox="0 0 24 24" style="width:56px;height:56px;stroke:#3fb950;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 8v4l3 3"/>
+            <path d="M8 12H4M12 4V1M16.24 7.76l2.12-2.12M20 12h3M16.24 16.24l2.12 2.12M12 20v3M7.76 16.24L5.64 18.36M4 12H1M7.76 7.76L5.64 5.64"/>
+          </svg>
+        </div>
+        <div class="card-body">
+          <div class="card-header">
+            <div class="card-title-group">
+              <svg viewBox="0 0 16 16"><path d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"/></svg>
+              <span class="card-title">Customer Churn Prediction Model</span>
+            </div>
+            <span class="public-badge">Public</span>
+          </div>
+          <p class="card-desc">ML pipeline on 10K+ customer records — feature engineering, Logistic Regression &amp; Decision Tree achieving ~80–85% accuracy. Surfaced key churn drivers to guide business strategy.</p>
+          <div class="card-tags">
+            <span class="topic-tag">python</span>
+            <span class="topic-tag">machine-learning</span>
+            <span class="topic-tag">pandas</span>
+            <span class="topic-tag">eda</span>
+            <span class="topic-tag">matplotlib</span>
+          </div>
+          <div class="card-footer">
+            <span><span class="lang-dot lang-python"></span>Python</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="no-results" id="no-results">No projects match your search or filter.</div>
+
+    <!-- Skills -->
+    <h2 class="section-heading" id="skills">Technical Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <div class="skill-group-label">Languages</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Python</span>
+          <span class="skill-badge">SQL</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Libraries</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Pandas</span>
+          <span class="skill-badge">NumPy</span>
+          <span class="skill-badge">Matplotlib</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Visualization</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Tableau</span>
+          <span class="skill-badge">Power BI</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-label">Tools</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Excel</span>
+          <span class="skill-badge">Git</span>
+          <span class="skill-badge">Jupyter Notebook</span>
+        </div>
+      </div>
+      <div class="skill-group" style="grid-column: 1 / -1">
+        <div class="skill-group-label">Other</div>
+        <div class="skill-badges">
+          <span class="skill-badge">Data Analysis</span>
+          <span class="skill-badge">Statistics</span>
+          <span class="skill-badge">Machine Learning</span>
+          <span class="skill-badge">Data Modeling</span>
+          <span class="skill-badge">A/B Testing</span>
+          <span class="skill-badge">Generative AI</span>
+          <span class="skill-badge">LLMs</span>
+          <span class="skill-badge">EDA</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <h2 class="section-heading" id="education">Education</h2>
+    <div class="edu-list">
+      <div class="edu-item">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-body">
+          <div class="edu-degree">B.Tech — Computer Science &amp; Artificial Intelligence</div>
+          <div class="edu-school">Newton School of Technology, Rishihood University, Sonipat</div>
+          <div class="edu-meta">
+            <span class="edu-year">2024 – 2028</span>
+            <span class="edu-grade">CGPA: 7.9 / 10</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contribution Graph -->
+    <div class="contrib-section">
+      <p class="contrib-title"><strong id="contrib-count">—</strong> contributions in the last year</p>
+      <div class="contrib-graph" id="contrib-graph"></div>
+    </div>
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-header-title" id="m-title">Project</div>
+      <button class="modal-close" id="modal-close">
+        <svg viewBox="0 0 16 16"><path d="M3.72 3.72a.75.75 0 011.06 0L8 6.94l3.22-3.22a.75.75 0 111.06 1.06L9.06 8l3.22 3.22a.75.75 0 11-1.06 1.06L8 9.06l-3.22 3.22a.75.75 0 01-1.06-1.06L6.94 8 3.72 4.78a.75.75 0 010-1.06z"/></svg>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="modal-desc" id="m-desc"></p>
+      <div class="modal-tools" id="m-tools"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel" id="modal-cancel">Cancel</button>
+      <a href="#" target="_blank" class="btn-view" id="m-link">View on GitHub</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>&copy; <span id="year"></span> Preet Vardhan. All rights reserved.</p>
+  <div style="margin-top:8px">
+    <a href="https://www.linkedin.com/in/preet-vardhan-aa4636323/" target="_blank">LinkedIn</a>
+    <a href="https://github.com/preetvardhan10" target="_blank">GitHub</a>
+    <a href="https://www.kaggle.com/preetvardhan" target="_blank">Kaggle</a>
+    <a href="mailto:preetvardhansingh8@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Contribution graph
+  const graph = document.getElementById('contrib-graph');
+  const levels = [0,0,0,0,1,1,2,2,3,4];
+  let total = 0;
+  for (let w = 0; w < 52; w++) {
+    const col = document.createElement('div');
+    col.className = 'contrib-col';
+    for (let d = 0; d < 7; d++) {
+      const cell = document.createElement('div');
+      const lvl = levels[Math.floor(Math.random() * levels.length)];
+      cell.className = 'contrib-cell' + (lvl ? ' l' + lvl : '');
+      total += lvl * Math.floor(Math.random() * 3 + 1);
+      col.appendChild(cell);
+    }
+    graph.appendChild(col);
+  }
+  document.getElementById('contrib-count').textContent = total;
+
+  // Search & filter
+  const cards = document.querySelectorAll('.project-card');
+  const searchEl = document.getElementById('search');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  let activeFilter = 'all';
+
+  function applyFilters() {
+    const q = searchEl.value.toLowerCase();
+    let visible = 0;
+    cards.forEach(card => {
+      const cat = card.dataset.category;
+      const title = card.dataset.title.toLowerCase();
+      const desc = card.dataset.desc.toLowerCase();
+      const matchFilter = activeFilter === 'all' || cat === activeFilter;
+      const matchSearch = !q || title.includes(q) || desc.includes(q);
+      if (matchFilter && matchSearch) { card.style.display = ''; visible++; }
+      else card.style.display = 'none';
+    });
+    document.getElementById('no-results').classList.toggle('show', visible === 0);
+    document.getElementById('proj-count').textContent = visible;
+  }
+
+  searchEl.addEventListener('input', applyFilters);
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  // Modal
+  const modal = document.getElementById('modal');
+  const mTitle = document.getElementById('m-title');
+  const mDesc = document.getElementById('m-desc');
+  const mTools = document.getElementById('m-tools');
+  const mLink = document.getElementById('m-link');
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      mTitle.textContent = card.dataset.title;
+      mDesc.textContent = card.dataset.desc;
+      mLink.href = card.dataset.link;
+      mTools.innerHTML = card.dataset.tools.split(',')
+        .map(t => `<span class="topic-tag">${t.trim()}</span>`).join('');
+      modal.classList.add('open');
+    });
+  });
+
+  function closeModal() { modal.classList.remove('open'); }
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-cancel').addEventListener('click', closeModal);
+  modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+</script>
+</body>
+</html>
