@@ -18,5 +18,3 @@
 - HTML, CSS
 - Data Visualization
 
-## 📸 Preview
-![Portfolio Preview](./Profile.jpg)
