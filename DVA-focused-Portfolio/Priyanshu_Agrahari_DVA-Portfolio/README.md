@@ -1,15 +1,22 @@
-# DVA Portfolio
+# Priyanshu Agrahari — DVA Portfolio
 
-A minimalist, professional data analytics portfolio showcasing projects in Python, SQL, Tableau, and more.
+🌐 **Live Portfolio:**  
+👉 https://dva-portfolio-plum.vercel.app/
 
-## Tech Stack
-- HTML5 / CSS3
-- Fully Responsive Design
-- Glassmorphism & Minimalist UI
+---
 
-## Projects Featured
+📊 This portfolio showcases my work in data analytics, visualization, and real-world problem solving.
+
+## 🚀 Highlights
+- Myntra Analytics Dashboard
 - Superstore Sales Analysis
-- Myntra Analytics
-- Aadhar Data Cleaning Pipeline
+- Aadhar Data Cleaning Project
 
-Built and maintained by [PriyanshuCP42](https://github.com/PriyanshuCP42).
+## 🛠️ Tech Stack
+- Python, Pandas
+- Power BI / Tableau
+- HTML, CSS
+- Data Visualization
+
+## 📸 Preview
+![Portfolio Preview](./Profile.jpg)
